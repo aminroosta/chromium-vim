@@ -100,6 +100,10 @@ let searchengine dogpile = "http://www.dogpile.com/search/web?q=%s" " If you lea
                                                                     " your query will be appended to the link.
                                                                     " Otherwise, your query will replace the '%s'.
 
+" This will do the same thing as above, except typing ':tabnew withbase' into to command bar
+" without any search parameters will open 'http://www.dogpile.com'
+let searchengine withbase = ["http://www.dogpile.com", "http://www.dogpile.com/search/web?q=%s"]
+
 " alias ':g' to ':tabnew google'
 command g tabnew google
 
@@ -345,7 +349,8 @@ let completionengines = ['google', 'google-image', 'youtube'] " Show only these 
 | **QuickMarks**            |                                                                       |                                 |
 | `M<*>`                    | create quickmark &lt;*&gt;                                            | addQuickMark                    |
 | `go<*>`                   | open quickmark &lt;*&gt; in the current tab                           | openQuickMark                   |
-| `gn<*>`                   | open quickmark &lt;*&gt; in a new tab &lt;N&gt; times                 | openQuickMarkTabbed             |
+| `gn<*>`                   | open quickmark &lt;*&gt; in a new tab                                 | openQuickMarkTabbed             |
+| `gw<*>`                   | open quickmark &lt;*&gt; in a new window                              | openQuickMarkWindowed           |
 | **Miscellaneous**         |                                                                       |                                 |
 | `a`                       | alias to ":tabnew google "                                            | :tabnew google                  |
 | `.`                       | repeat the last command                                               | repeatCommand                   |

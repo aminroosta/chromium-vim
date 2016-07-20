@@ -20,21 +20,21 @@ var Complete = {
   locales: {
     uk: {
       tld: 'co.uk',
-      requestUrl: ['google'],
-      baseUrl: ['google'],
-      apiUrl: ['google']
+      requestUrl: ['google', 'youtube'],
+      baseUrl: ['google', 'youtube'],
+      apiUrl: ['google', 'youtube']
     },
     jp: {
       tld: 'co.jp',
-      requestUrl: ['google'],
-      baseUrl: ['google'],
-      apiUrl: ['google']
+      requestUrl: ['google', 'youtube'],
+      baseUrl: ['google', 'youtube'],
+      apiUrl: ['google', 'youtube']
     },
     aus: {
       tld: 'com.au',
-      requestUrl: ['google'],
-      baseUrl: ['google'],
-      apiUrl: ['google']
+      requestUrl: ['google', 'youtube'],
+      baseUrl: ['google', 'youtube'],
+      apiUrl: ['google', 'youtube']
     }
   },
 
@@ -76,9 +76,7 @@ var Complete = {
 
     if (suffix.validURL())
       return suffix.convertLink();
-    return prefix.indexOf('%s') !== -1 ?
-      prefix.embedString(suffix) :
-      prefix + suffix;
+    return prefix.embedString(suffix);
   },
 
   setLocale: function(locale) {
@@ -505,5 +503,19 @@ Complete.engines = {
         }));
       }.bind(this));
     }
-  }
+  },
+
+  baidu: {
+    baseUrl: 'https://www.baidu.com/',
+    requestUrl: 'https://www.baidu.com/s?wd=',
+    apiUrl: 'http://suggestion.baidu.com/su?json=1&cb=&wd=',
+    queryApi: function(query, callback) {
+      httpRequest({
+        url: this.apiUrl.embedString(encodeURIComponent(query)),
+      }, function(response) {
+        response = JSON.parse(response.slice(1, -2));
+        callback(response.s);
+      });
+    }
+  },
 };
