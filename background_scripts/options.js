@@ -160,6 +160,12 @@ var defaultSettings = {
         box-sizing: border-box;
         border: 3px solid yellow;
     }
+    .highly-highlight-menu {
+        transform: scale(.5) translateY(40px) !important;
+    }
+    .highly-navbar {
+        display: none !important;
+    }
     .hl-selection {
         position: relative;
         display: inline-block;
