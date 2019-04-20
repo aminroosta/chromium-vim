@@ -246,7 +246,7 @@ var defaultSettings = {
         
         var selections = document.querySelectorAll('.hl-selection'); [].map.call(selections, unwrap);
         
-        const key = window.location.href;
+        const key = window.location.href.replace(window.location.hash, '');
         chrome.storage.sync.get([key], function(result) {
             var states = JSON.parse(result[key] || '{}');  
             console.log(states);

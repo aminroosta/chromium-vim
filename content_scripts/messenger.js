@@ -162,6 +162,10 @@ port.onMessage.addListener(function(response) {
     }
     break;
   }
+   if(settings && !window.called_auto_load_comments) {
+       window.called_auto_load_comments = true;
+       eval(settings.FUNCTIONS.SaveSelection)();
+   }
 });
 
 chrome.extension.onMessage.addListener(function(request, sender, callback) {
@@ -325,3 +329,5 @@ chrome.extension.onMessage.addListener(function(request, sender, callback) {
     break;
   }
 });
+
+
