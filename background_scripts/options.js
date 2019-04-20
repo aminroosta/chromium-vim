@@ -166,6 +166,9 @@ var defaultSettings = {
     .highly-navbar {
         display: none !important;
     }
+    .highly-highlight.highly-highlight {
+        background: linear-gradient(-100deg, rgba(250, 226, 133, 0.3), rgba(250, 226, 133, 0.7) 95%, rgba(250, 226, 133, 0.1)) !important;
+    }
     .hl-selection {
         position: relative;
         display: inline-block;
